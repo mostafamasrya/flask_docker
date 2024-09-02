@@ -4,11 +4,12 @@ from flask_pymongo import PyMongo
 from bson import json_util
 import os
 from abc import ABC, abstractmethod
-
+from flask_cors import CORS
 # ===============================================================
 
 
 app = Flask(__name__)
+CORS(app)
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/mostafa"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost:27017/mostafa")
 

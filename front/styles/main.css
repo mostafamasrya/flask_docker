@@ -1,0 +1,75 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #0070F1, #3399ff); /* Gradient from dark to light blue */
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.language-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #0070F1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.content-container {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    padding-top: 40px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.button-container {
+    margin-top: 30px;
+}
+
+.start-meeting-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #0070F1;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+

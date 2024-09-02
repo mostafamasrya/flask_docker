@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Demo Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #0070F1, #3399ff); /* Gradient from dark to light blue */
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 5px 10px;
+            background-color: #fff;
+            color: #0070F1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .content-container {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            padding-top: 40px;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            max-width: 150px;
+            max-height: 150px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .button-container {
+            margin-top: 30px;
+        }
+        
+        .start-meeting-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #0070F1;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }        
+    </style>
+</head>
+<body>
+
+    <button class="language-switch" onclick="switchLanguage()">العربية</button>
+
+    <div class="content-container">
+        <div class="logo-container">
+            <img src="./front/assets/msk-tp.png" alt="Your Company Logo" class="logo">
+            <img src="./front/assets/azhar-white-tp.png" alt="Demo Company Logo" class="logo">
+        </div>
+
+        <h1 id="page-title">Welcome to the Demo Page</h1>
+        <h2 id="page-subtitle">Experience the Future of Digital Transformation</h2>
+        <p id="page-description">
+            On this page, you will find a demonstration of our cutting-edge solutions tailored for your company. 
+            Discover how we can help you achieve seamless digital transformation and unlock new potentials.
+        </p>
+        <p id="page-description-2">
+            Click the button below to start a live demonstration meeting where we will showcase our capabilities.
+        </p>
+
+        <div class="button-container">
+            <button class="start-meeting-btn" onclick="startMeeting()">Start Meeting</button>
+        </div>
+    </div>
+
+    <script>
+        function startMeeting() {
+            // Replace with your actual API call
+            fetch('https://99aa-102-44-48-163.ngrok-free.app/create_meeting', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': '69420',
+
+                },
+                // body: JSON.stringify({/* Your request payload here */})
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("aaaaaaaaaaaaaaaaaaa", data)
+                if(data && data.link) {
+                    window.open(data.link, '_blank');
+                } else {
+                    alert('Failed to start meeting.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function switchLanguage() {
+            const isEnglish = document.documentElement.lang === 'en';
+
+            document.documentElement.lang = isEnglish ? 'ar' : 'en';
+            document.documentElement.dir = isEnglish ? 'rtl' : 'ltr';
+
+            document.getElementById('page-title').textContent = isEnglish ? 'مرحبًا بكم في صفحة العرض' : 'Welcome to the Demo Page';
+            document.getElementById('page-subtitle').textContent = isEnglish ? 'اكتشف مستقبل التحول الرقمي' : 'Experience the Future of Digital Transformation';
+            document.getElementById('page-description').textContent = isEnglish ? 
+                'في هذه الصفحة ، ستجد عرضًا توضيحيًا لحلولنا المتطورة المصممة لشركتك. اكتشف كيف يمكننا مساعدتك في تحقيق تحول رقمي سلس وفتح إمكانيات جديدة.' : 
+                'On this page, you will find a demonstration of our cutting-edge solutions tailored for your company. Discover how we can help you achieve seamless digital transformation and unlock new potentials.';
+            document.getElementById('page-description-2').textContent = isEnglish ? 
+                'انقر على الزر أدناه لبدء اجتماع العرض المباشر حيث سنعرض قدراتنا.' : 
+                'Click the button below to start a live demonstration meeting where we will showcase our capabilities.';
+
+            document.querySelector('.start-meeting-btn').textContent = isEnglish ? 'بدء الاجتماع' : 'Start Meeting';
+
+            document.querySelector('.language-switch').textContent = isEnglish ? 'English' : 'العربية';
+        }
+    </script>
+
+</body>
+</html>
